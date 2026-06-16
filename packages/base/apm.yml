@@ -7,9 +7,10 @@ dependencies:
   apm: []
   mcp:
     # CodeGraph MCP-Server — lokaler stdio-Prozess (codegraph serve --mcp).
-    # Wird beim `apm install` in alle erkannten Clients (.claude/) eingetragen
-    # und gilt damit für ALLE Repos, die base einbinden.
+    # registry MUSS Boolean false sein (markiert self-defined). Nicht quoten!
+    # 'false' (String) bricht die transitive Auflösung ("Invalid MCP registry URL").
     - name: codegraph
+      registry: false
       transport: stdio
       command: codegraph
       args: ["serve", "--mcp"]
