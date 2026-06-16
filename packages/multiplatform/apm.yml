@@ -1,0 +1,6 @@
+# Multiplatform-Paket — projektspezifische Skills/Hooks/Instructions.
+name: multiplatform
+version: 1.0.0
+dependencies:
+  apm: []
+  mcp: []

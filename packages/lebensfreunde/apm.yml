@@ -1,0 +1,6 @@
+# Lebensfreunde-Paket — projektspezifische Skills/Hooks/Instructions.
+name: lebensfreunde
+version: 1.0.0
+dependencies:
+  apm: []
+  mcp: []

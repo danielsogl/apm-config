@@ -1,0 +1,12 @@
+# APM generierte Artefakte — nie committen
+apm_modules/
+apm.lock.yaml
+
+# Kompilierte Harness-Ausgaben (werden von `apm install` erzeugt)
+.claude/
+.github/copilot-instructions.md
+.cursor/
+.codex/
+
+# OS / Editor
+.DS_Store

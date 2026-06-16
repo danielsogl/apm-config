@@ -1,0 +1,6 @@
+# Wonda-Paket — projektspezifische Skills/Hooks/Instructions.
+name: wonda
+version: 1.0.0
+dependencies:
+  apm: []
+  mcp: []

@@ -1,0 +1,7 @@
+# Base-Paket — gilt für ALLE Repos.
+# Globale Skills, Hooks, Instructions, Agents und Prompts liegen unter .apm/.
+name: base
+version: 1.0.0
+dependencies:
+  apm: []
+  mcp: []
