@@ -1,0 +1,27 @@
+# Lefthook — Git-Hooks für das apm-config Producer-Repo.
+# Installieren: `lefthook install` (lefthook via `brew install lefthook` o. ä.)
+#
+# Beim Commit wird die APM-Config jedes Pakets, das geänderte Dateien enthält,
+# über `apm compile --validate` geprüft (parst Frontmatter + Struktur, ohne zu kompilieren).
+# Docs: https://microsoft.github.io/apm/producer/preview-and-validate/
+
+pre-commit:
+  jobs:
+    - name: validate-apm-config
+      # Nur auslösen, wenn Dateien innerhalb eines Pakets gestaged sind.
+      glob: "packages/*/**"
+      run: |
+        set -eu
+        command -v apm >/dev/null 2>&1 || {
+          echo "[apm] 'apm' CLI nicht gefunden — bitte installieren: https://microsoft.github.io/apm/getting-started/installation/" >&2
+          exit 1
+        }
+        # Betroffene Pakete aus den gestageten Dateien ableiten (eindeutig).
+        pkgs=$(printf '%s\n' {staged_files} | sed -E 's#^(packages/[^/]+)/.*#\1#' | sort -u)
+        rc=0
+        for pkg in $pkgs; do
+          [ -f "$pkg/apm.yml" ] || continue
+          echo "[apm] validiere $pkg"
+          (cd "$pkg" && apm compile --validate) || rc=1
+        done
+        exit $rc

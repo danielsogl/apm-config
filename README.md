@@ -47,6 +47,28 @@ Dann:
 apm install
 ```
 
+## Git-Hooks (lefthook)
+
+Beim Commit wird die APM-Config jedes Pakets mit gestageten Änderungen automatisch
+über `apm compile --validate` geprüft ([Docs](https://microsoft.github.io/apm/producer/preview-and-validate/)).
+So landen keine kaputten Primitives (Frontmatter/Struktur) im Repo.
+
+Einmalig einrichten (nach dem Clone):
+
+```bash
+brew install lefthook   # oder: https://lefthook.dev/installation/
+lefthook install        # installiert die Git-Hooks aus lefthook.yml
+```
+
+Manuell ausführen:
+
+```bash
+lefthook run pre-commit
+```
+
+> Voraussetzung: das `apm` CLI muss installiert sein
+> ([Installation](https://microsoft.github.io/apm/getting-started/installation/)).
+
 ## Versionierung
 
 Repo taggen (`git tag v1.0.0 && git push --tags`) und in den Projekten `ref:` auf den Tag
