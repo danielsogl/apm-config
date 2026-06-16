@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://microsoft.github.io/apm/specs/schemas/manifest-v0.1.schema.json
 # Base-Paket — gilt für ALLE Repos.
 # Globale Skills, Hooks, Instructions, Agents und Prompts liegen unter .apm/.
 name: base
