@@ -4,13 +4,28 @@
 name: base
 version: 1.0.0
 dependencies:
-  apm: []
+  apm:
+    - figma/mcp-server-guide
   mcp:
-    # CodeGraph MCP-Server — lokaler stdio-Prozess (codegraph serve --mcp).
-    # registry MUSS Boolean false sein (markiert self-defined). Nicht quoten!
-    # 'false' (String) bricht die transitive Auflösung ("Invalid MCP registry URL").
+    - name: context7
+      registry: "false"
+      transport: http
+      url: https://mcp.context7.com/mcp
+
+    - name: atlassian
+      registry: "false"
+      transport: http
+      url: https://mcp.atlassian.com/v1/mcp/authv2
+
+    - name: figma
+      registry: "false"
+      transport: http
+      url: https://mcp.figma.com/mcp
+
     - name: codegraph
-      registry: false
+      registry: "false"
       transport: stdio
       command: codegraph
-      args: ["serve", "--mcp"]
+      args:
+        - serve
+        - --mcp
