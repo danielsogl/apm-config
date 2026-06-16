@@ -3,5 +3,6 @@
 name: multiplatform
 version: 1.0.0
 dependencies:
-  apm: ['angular/skills/angular-developer']
+  apm:
+    - "angular/skills/angular-developer"
   mcp: []
