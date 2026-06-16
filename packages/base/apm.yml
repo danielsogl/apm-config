@@ -10,7 +10,6 @@ dependencies:
     # Wird beim `apm install` in alle erkannten Clients (.claude/) eingetragen
     # und gilt damit für ALLE Repos, die base einbinden.
     - name: codegraph
-      registry: 'false'
       transport: stdio
       command: codegraph
       args: ["serve", "--mcp"]
