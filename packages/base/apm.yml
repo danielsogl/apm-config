@@ -6,23 +6,28 @@ version: 1.0.0
 dependencies:
   apm:
     - figma/mcp-server-guide
-  # Direkt deklarierte MCP-Server (kein Registry-Lookup): durch transport+url
-  # bzw. transport+command definiert. KEIN `registry`-Feld setzen — APM würde
-  # dessen Wert sonst als Registry-URL interpretieren und scheitern.
+  # Direkt deklarierte MCP-Server: `registry: false` (Boolean!) markiert sie als
+  # self-defined, sodass APM KEINEN Registry-Lookup per Name macht, sondern
+  # transport+url (http) bzw. transport+command (stdio) direkt verwendet.
+  # Achtung: `registry: "false"` (String) wird als Registry-URL interpretiert und schlägt fehl.
   mcp:
     - name: context7
+      registry: false
       transport: http
       url: https://mcp.context7.com/mcp
 
     - name: atlassian
+      registry: false
       transport: http
       url: https://mcp.atlassian.com/v1/mcp/authv2
 
     - name: figma
+      registry: false
       transport: http
       url: https://mcp.figma.com/mcp
 
     - name: codegraph
+      registry: false
       transport: stdio
       command: codegraph
       args:
